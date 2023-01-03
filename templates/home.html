@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h2>Cupcakes</h2>
+    <ul id="cupcake-list">
+
+    </ul>
+
+    <h2>Add a cupcake!</h2>
+    <form id="cupcake-form">
+        <!-- <label for="flavor">Flavor</label>
+        <input type="text">
+        <label for="size">Size</label>    
+        <input type="text"> -->
+        
+        {{ form.hidden_tag() }}
+            {% for field in form if field.widget.input_type != 'hidden' %}
+            <p>
+                {{field.label}}
+                {{field}}
+    
+                {% for error in field.errors %}
+                    {{error}}
+                {% endfor %}
+            </p>    
+            {% endfor %}
+            <button id="add-cupcake">Add!</button>
+    </form>            
+<script src="http://unpkg.com/jquery"></script>
+<script src="http://unpkg.com/axios/dist/axios.js"></script>
+<script src="static/app.js"></script>
+</body>
+</html>
+
